@@ -1,0 +1,7 @@
+Get http://localhost:3000/note/render/example-note
+# Content-Type: application/json
+
+{
+  "title": "example-note",
+  "content": "This is an **example** of Markdown content."
+}
