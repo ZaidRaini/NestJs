@@ -18,8 +18,8 @@ export class ProductsController {
 
   @UseGuards(JwtGuard)
   @Post()
-  createProducts(@Body() body: CreateProductDto) {
-    const product = this.productsService.createProduct(body);
+  async createProducts(@Body() body: CreateProductDto) {
+    const product = await this.productsService.createProduct(body);
     return {
       message: 'Product created successfully',
       data: product,
@@ -28,17 +28,17 @@ export class ProductsController {
 
   @UseGuards(JwtGuard)
   @Post('bulk')
-  createManyProducts(@Body() body: CreateProductDto[]) {
-    const product = this.productsService.createManyProducts(body);
+  async createManyProducts(@Body() body: CreateProductDto[]) {
+    const products = await this.productsService.createManyProducts(body);
     return {
-      message: 'Product created successfully',
-      data: product,
+      message: 'Products created successfully',
+      data: products,
     };
   }
 
   @Get()
-  getAllProduct() {
-    const product = this.productsService.getAllproduct();
+  async getAllProduct() {
+    const product = await this.productsService.getAllproduct();
     return {
       message: 'Product fetched successfully',
       data: product,
@@ -46,8 +46,8 @@ export class ProductsController {
   }
 
   @Get(':id')
-  getProductWithId(@Param('id') id: string) {
-    const product = this.productsService.getProductWithId(id);
+  async getProductWithId(@Param('id') id: string) {
+    const product = await this.productsService.getProductWithId(id);
     return {
       message: 'Product fetched successfully',
       data: product,
@@ -56,15 +56,15 @@ export class ProductsController {
 
   @UseGuards(JwtGuard)
   @Put(':id')
-  updateProduct(@Param('id') id: string, @Body() body: updateProductDto) {
-    const product = this.productsService.updateProduct(id, body);
+  async updateProduct(@Param('id') id: string, @Body() body: updateProductDto) {
+    const product = await this.productsService.updateProduct(id, body);
     return { message: 'Product updated successfully', data: product };
   }
 
   @UseGuards(JwtGuard)
   @Delete(':id')
-  deleteProduct(@Param('id') id: string) {
-    const product = this.productsService.deleteProduct(id);
+  async deleteProduct(@Param('id') id: string) {
+    const product = await this.productsService.deleteProduct(id);
     return {
       message: 'Product deleted successfully',
       data: product,

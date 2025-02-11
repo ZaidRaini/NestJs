@@ -18,7 +18,7 @@ export class UsersService {
       where: { email },
     });
     if (existingUser) {
-      throw new BadRequestException('User already exists');
+      throw new BadRequestException('Email is already exists');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -51,7 +51,7 @@ export class UsersService {
       throw new BadRequestException('Invalid credentials');
     }
 
-    const token = await this.jwtService.sign({ id: user.id });
+    const token = await this.jwtService.signAsync({ id: user.id });
 
     return {
       message: 'Login Successfull',

@@ -32,6 +32,7 @@ export class CreateProductDto {
 export class updateProductDto {
   @IsString()
   @IsNotEmpty()
+  @IsOptional()
   name?: string;
 
   @IsOptional()
@@ -39,13 +40,16 @@ export class updateProductDto {
   description?: string;
 
   @IsNumber()
+  @IsOptional()
   price?: number;
 
   @IsInt()
   @Min(0)
+  @IsOptional()
   stock?: number;
 
   @IsOptional()
   @IsUrl()
+  @IsOptional()
   imageUrl?: string;
 }

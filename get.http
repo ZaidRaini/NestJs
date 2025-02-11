@@ -1,0 +1,10 @@
+# POST http://localhost:3000/auth/register
+# Content-Type: application/json
+
+# {
+#   "name": "John Doe",
+#   "email": "john@example.com",
+#   "username": "johndoe123",
+#   "password": "securepassword"
+# }
+GET http://localhost:3000/products
